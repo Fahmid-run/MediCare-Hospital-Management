@@ -1,0 +1,24 @@
+
+enum Role{
+  PATIENT
+
+DOCTOR
+
+ADMIN
+}
+enum Bug_Status{
+  Closed
+  Open
+}
+
+enum Bug_Priority{
+  Low
+  Midium
+  High
+}
+
+enum Active_Status{
+  Blocked
+  Active
+}
+

@@ -1,0 +1,26 @@
+model Doctors{
+  id String @id @default(uuid())
+
+  userId String
+
+  specialization String
+
+  degree String
+
+  hospital String
+
+  experienceYears Int
+
+  consultationFee Int
+
+bio String @db.VarChar(200)
+
+rating Int
+
+verified Boolean
+ created_at DateTime @default(now()) 
+  updatedat DateTime @updatedAt
+
+
+@@map("doctors")
+}
