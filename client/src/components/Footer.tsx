@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom';
 import { Icon } from './Icon';
+import { useState } from 'react';
 
 const quickLinks = [
   { to: '/', label: 'Home' },
   { to: '/doctors', label: 'Find Doctors' },
-  { to: '/book', label: 'Book Appointment' },
-  { to: '/track', label: 'Track Appointment' },
-  { to: '/dashboard', label: 'Dashboard' },
+  { to: '/book', label: 'Book Appointment', isLogginedRequired: true },
+  { to: '/track', label: 'Track Appointment', isLogginedRequired: true },
+  { to: '/dashboard', label: 'Dashboard', isLogginedRequired: true },
 ];
 
 const departments = ['Cardiology', 'Neurology', 'Orthopedics', 'Pediatrics', 'Dermatology', 'Oncology'];
@@ -20,6 +21,7 @@ const socials = [
 ];
 
 export default function Footer() {
+  const [isLoggined,setIsLoggined]= useState(false);
   return (
     <footer className="bg-slate-900 text-slate-300 mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
@@ -49,7 +51,7 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold text-white mb-4">Quick Links</h4>
             <ul className="space-y-2.5">
-              {quickLinks.map((l) => (
+              {quickLinks.filter(link=>!link.isLogginedRequired || isLoggined).map((l) => (
                 <li key={l.to}>
                   <Link to={l.to} className="text-sm text-slate-400 hover:text-primary-400 transition-colors">{l.label}</Link>
                 </li>
@@ -92,7 +94,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-sm text-slate-500">© 2024 MediCare Hospital Management. All rights reserved.</p>
+          <p className="text-sm text-slate-500">© 2026 MediCare Hospital Management. All rights reserved.</p>
           <div className="flex gap-5 text-sm text-slate-500">
             <a href="#" className="hover:text-primary-400 transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-primary-400 transition-colors">Terms of Service</a>

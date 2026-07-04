@@ -34,6 +34,8 @@ const createAppointment = catchAsync(
 );
 
 
+
+
 const findmyAppointment = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     const patientId = req.user?.id as string;
