@@ -6,15 +6,23 @@ DOCTOR
 
 ADMIN
 }
-enum Bug_Status{
-  Closed
-  Open
+enum Gender{
+  Male
+  Female
 }
 
-enum Bug_Priority{
-  Low
-  Midium
-  High
+enum Appointment_Status{
+  Pending
+
+Confirmed
+
+Completed
+
+Cancelled
+}
+enum Payment_Status{
+  Pending 
+  Done
 }
 
 enum Active_Status{

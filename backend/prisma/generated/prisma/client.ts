@@ -31,8 +31,8 @@ export * from "./enums"
  * const prisma = new PrismaClient({
  *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
  * })
- * // Fetch zero or more Bugs
- * const bugs = await prisma.bugs.findMany()
+ * // Fetch zero or more Appointments
+ * const appointments = await prisma.appointment.findMany()
  * ```
  * 
  * Read more in our [docs](https://pris.ly/d/client).
@@ -42,15 +42,45 @@ export type PrismaClient<LogOpts extends Prisma.LogLevel = never, OmitOpts exten
 export { Prisma }
 
 /**
- * Model Bugs
+ * Model Appointment
  * 
  */
-export type Bugs = Prisma.BugsModel
+export type Appointment = Prisma.AppointmentModel
 /**
- * Model Projects
+ * Model Availability
  * 
  */
-export type Projects = Prisma.ProjectsModel
+export type Availability = Prisma.AvailabilityModel
+/**
+ * Model Doctors
+ * 
+ */
+export type Doctors = Prisma.DoctorsModel
+/**
+ * Model Invoice
+ * 
+ */
+export type Invoice = Prisma.InvoiceModel
+/**
+ * Model Notification
+ * 
+ */
+export type Notification = Prisma.NotificationModel
+/**
+ * Model Patients
+ * 
+ */
+export type Patients = Prisma.PatientsModel
+/**
+ * Model Prescription
+ * 
+ */
+export type Prescription = Prisma.PrescriptionModel
+/**
+ * Model Reviews
+ * 
+ */
+export type Reviews = Prisma.ReviewsModel
 /**
  * Model User
  * 

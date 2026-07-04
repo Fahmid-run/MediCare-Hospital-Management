@@ -1,0 +1,19 @@
+model Availability{
+    id String @id @default(uuid())
+    doctorId String @unique
+    doctor Doctors @relation(fields: [doctorId],references: [id],onDelete: Cascade)
+    day String
+    startTime String
+    endTime String
+    isAvailable Boolean
+
+
+
+ created_at DateTime @default(now()) 
+  updatedat DateTime @updatedAt
+
+
+@@index([doctorId])
+
+@@map("availability")
+}

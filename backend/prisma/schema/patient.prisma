@@ -1,0 +1,19 @@
+  model Patients{
+    id String @id @default(uuid())
+    userId String @unique
+    user User @relation(fields: [userId],references: [id],onDelete: Cascade)
+    age Int
+    gender Gender @default(Male)
+    bloodGroup String
+    address String
+    reviews Reviews[]
+    prescription Prescription[]
+    appointment Appointment[]
+    
+
+    created_at DateTime @default(now()) 
+  updatedat DateTime @updatedAt
+
+@@index([userId])
+  @@map("patients")
+}

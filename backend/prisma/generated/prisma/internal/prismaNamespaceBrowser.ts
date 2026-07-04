@@ -51,8 +51,14 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  Bugs: 'Bugs',
-  Projects: 'Projects',
+  Appointment: 'Appointment',
+  Availability: 'Availability',
+  Doctors: 'Doctors',
+  Invoice: 'Invoice',
+  Notification: 'Notification',
+  Patients: 'Patients',
+  Prescription: 'Prescription',
+  Reviews: 'Reviews',
   User: 'User'
 } as const
 
@@ -72,30 +78,117 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-export const BugsScalarFieldEnum = {
+export const AppointmentScalarFieldEnum = {
   id: 'id',
+  doctorId: 'doctorId',
+  patientId: 'patientId',
+  timeSlot: 'timeSlot',
+  status: 'status',
+  reason: 'reason',
+  paymentStatus: 'paymentStatus',
+  created_at: 'created_at',
+  updatedat: 'updatedat'
+} as const
+
+export type AppointmentScalarFieldEnum = (typeof AppointmentScalarFieldEnum)[keyof typeof AppointmentScalarFieldEnum]
+
+
+export const AvailabilityScalarFieldEnum = {
+  id: 'id',
+  doctorId: 'doctorId',
+  day: 'day',
+  startTime: 'startTime',
+  endTime: 'endTime',
+  isAvailable: 'isAvailable',
+  created_at: 'created_at',
+  updatedat: 'updatedat'
+} as const
+
+export type AvailabilityScalarFieldEnum = (typeof AvailabilityScalarFieldEnum)[keyof typeof AvailabilityScalarFieldEnum]
+
+
+export const DoctorsScalarFieldEnum = {
+  id: 'id',
+  specialization: 'specialization',
+  degree: 'degree',
+  hospital: 'hospital',
+  experienceYears: 'experienceYears',
+  consultationFee: 'consultationFee',
+  bio: 'bio',
+  rating: 'rating',
+  verified: 'verified',
+  userId: 'userId',
+  created_at: 'created_at',
+  updatedat: 'updatedat'
+} as const
+
+export type DoctorsScalarFieldEnum = (typeof DoctorsScalarFieldEnum)[keyof typeof DoctorsScalarFieldEnum]
+
+
+export const InvoiceScalarFieldEnum = {
+  id: 'id',
+  appointmentId: 'appointmentId',
+  amount: 'amount',
+  paymentMethod: 'paymentMethod',
+  status: 'status',
+  created_at: 'created_at',
+  updatedat: 'updatedat'
+} as const
+
+export type InvoiceScalarFieldEnum = (typeof InvoiceScalarFieldEnum)[keyof typeof InvoiceScalarFieldEnum]
+
+
+export const NotificationScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
   title: 'title',
-  description: 'description',
-  bug_status: 'bug_status',
-  priority: 'priority',
-  authorId: 'authorId',
-  projectId: 'projectId',
+  message: 'message',
   created_at: 'created_at',
   updatedat: 'updatedat'
 } as const
 
-export type BugsScalarFieldEnum = (typeof BugsScalarFieldEnum)[keyof typeof BugsScalarFieldEnum]
+export type NotificationScalarFieldEnum = (typeof NotificationScalarFieldEnum)[keyof typeof NotificationScalarFieldEnum]
 
 
-export const ProjectsScalarFieldEnum = {
+export const PatientsScalarFieldEnum = {
   id: 'id',
-  name: 'name',
-  authorId: 'authorId',
+  userId: 'userId',
+  age: 'age',
+  gender: 'gender',
+  bloodGroup: 'bloodGroup',
+  address: 'address',
   created_at: 'created_at',
   updatedat: 'updatedat'
 } as const
 
-export type ProjectsScalarFieldEnum = (typeof ProjectsScalarFieldEnum)[keyof typeof ProjectsScalarFieldEnum]
+export type PatientsScalarFieldEnum = (typeof PatientsScalarFieldEnum)[keyof typeof PatientsScalarFieldEnum]
+
+
+export const PrescriptionScalarFieldEnum = {
+  id: 'id',
+  patientId: 'patientId',
+  doctorId: 'doctorId',
+  appointmentId: 'appointmentId',
+  diagnosis: 'diagnosis',
+  instructions: 'instructions',
+  created_at: 'created_at',
+  updatedat: 'updatedat'
+} as const
+
+export type PrescriptionScalarFieldEnum = (typeof PrescriptionScalarFieldEnum)[keyof typeof PrescriptionScalarFieldEnum]
+
+
+export const ReviewsScalarFieldEnum = {
+  id: 'id',
+  doctorId: 'doctorId',
+  patientId: 'patientId',
+  rating: 'rating',
+  comment: 'comment',
+  created_at: 'created_at',
+  updatedat: 'updatedat'
+} as const
+
+export type ReviewsScalarFieldEnum = (typeof ReviewsScalarFieldEnum)[keyof typeof ReviewsScalarFieldEnum]
 
 
 export const UserScalarFieldEnum = {
@@ -103,9 +196,9 @@ export const UserScalarFieldEnum = {
   name: 'name',
   email: 'email',
   password: 'password',
-  active_status: 'active_status',
   role: 'role',
   profile_photo: 'profile_photo',
+  phone: 'phone',
   created_at: 'created_at',
   updatedat: 'updatedat'
 } as const

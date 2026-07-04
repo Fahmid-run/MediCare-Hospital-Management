@@ -6,6 +6,11 @@ model User{
   role Role @default(PATIENT)
   profile_photo String?
   phone Int? @unique
+
+  notification Notification[]
+  doctor Doctors?
+  patient Patients?
+
   created_at DateTime @default(now()) 
   updatedat DateTime @updatedAt
  

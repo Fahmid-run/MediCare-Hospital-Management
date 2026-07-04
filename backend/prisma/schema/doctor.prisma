@@ -1,8 +1,5 @@
 model Doctors{
   id String @id @default(uuid())
-
-  userId String
-
   specialization String
 
   degree String
@@ -13,14 +10,21 @@ model Doctors{
 
   consultationFee Int
 
-bio String @db.VarChar(200)
+  bio String @db.VarChar(200)
 
-rating Int
+  rating Int
 
-verified Boolean
- created_at DateTime @default(now()) 
+  verified Boolean
+
+  userId String @unique
+  user User @relation(fields: [userId],references: [id],onDelete: Cascade)
+   reviews Reviews[]
+   prescription Prescription[]
+   availability Availability[]
+   appointment Appointment[]
+
+  created_at DateTime @default(now()) 
   updatedat DateTime @updatedAt
-
 
 @@map("doctors")
 }

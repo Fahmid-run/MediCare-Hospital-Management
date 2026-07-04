@@ -10,29 +10,38 @@
 */
 
 export const Role = {
-  User: 'User',
-  Admin: 'Admin',
-  Author: 'Author'
+  PATIENT: 'PATIENT',
+  DOCTOR: 'DOCTOR',
+  ADMIN: 'ADMIN'
 } as const
 
 export type Role = (typeof Role)[keyof typeof Role]
 
 
-export const Bug_Status = {
-  Closed: 'Closed',
-  Open: 'Open'
+export const Gender = {
+  Male: 'Male',
+  Female: 'Female'
 } as const
 
-export type Bug_Status = (typeof Bug_Status)[keyof typeof Bug_Status]
+export type Gender = (typeof Gender)[keyof typeof Gender]
 
 
-export const Bug_Priority = {
-  Low: 'Low',
-  Midium: 'Midium',
-  High: 'High'
+export const Appointment_Status = {
+  Pending: 'Pending',
+  Confirmed: 'Confirmed',
+  Completed: 'Completed',
+  Cancelled: 'Cancelled'
 } as const
 
-export type Bug_Priority = (typeof Bug_Priority)[keyof typeof Bug_Priority]
+export type Appointment_Status = (typeof Appointment_Status)[keyof typeof Appointment_Status]
+
+
+export const Payment_Status = {
+  Pending: 'Pending',
+  Done: 'Done'
+} as const
+
+export type Payment_Status = (typeof Payment_Status)[keyof typeof Payment_Status]
 
 
 export const Active_Status = {
