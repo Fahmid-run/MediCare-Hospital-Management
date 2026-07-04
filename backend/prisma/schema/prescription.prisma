@@ -1,26 +1,21 @@
-model Prescription{
-    id String @id @default(uuid())
-    patientId String @unique
-    patient Patients @relation(fields: [patientId],references: [id],onDelete: Cascade)
-    doctorId String @unique
-    doctor Doctors @relation(fields: [doctorId],references: [id],onDelete: Cascade)
+model Prescription {
+  id        String   @id @default(uuid())
+  patientId String   @unique
+  patient   Patients @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  doctorId  String   @unique
+  doctor    Doctors  @relation(fields: [doctorId], references: [id], onDelete: Cascade)
 
-    appointmentId String @unique
-    appointment Appointment @relation(fields: [appointmentId],references: [id],onDelete: Cascade)
+  appointmentId String      @unique
+  appointment   Appointment @relation(fields: [appointmentId], references: [id], onDelete: Cascade)
 
+  diagnosis String
 
+  instructions String
 
+  created_at DateTime @default(now())
+  updatedat  DateTime @updatedAt
 
-    diagnosis String
-
-    instructions String
-
-
- created_at DateTime @default(now()) 
-  updatedat DateTime @updatedAt
-
-@@index([patientId])
-@@index([doctorId])
-
-@@map("prescription")
+  @@index([patientId])
+  @@index([doctorId])
+  @@map("prescription")
 }

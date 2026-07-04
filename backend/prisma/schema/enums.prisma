@@ -1,32 +1,47 @@
-
-enum Role{
+enum Role {
   PATIENT
 
-DOCTOR
+  DOCTOR
 
-ADMIN
+  ADMIN
 }
-enum Gender{
+
+enum Gender {
   Male
   Female
 }
 
-enum Appointment_Status{
+enum Appointment_Status {
   Pending
 
-Confirmed
+  Confirmed
 
-Completed
+  Completed
 
-Cancelled
+  Cancelled
 }
-enum Payment_Status{
-  Pending 
+
+enum Payment_Status {
+  Pending
   Done
 }
 
-enum Active_Status{
+enum Active_Status {
   Blocked
   Active
 }
 
+enum Specialty_Enum {
+  Cardiology
+  Neurology
+  Orthopedics
+  Ophthalmology
+  Pediatrics
+  Dermatology
+  Dentistry
+  ENT
+  Psychiatry
+  Oncology
+  Gynecology
+  
+}

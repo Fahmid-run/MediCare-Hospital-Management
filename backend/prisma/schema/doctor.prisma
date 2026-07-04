@@ -1,5 +1,5 @@
-model Doctors{
-  id String @id @default(uuid())
+model Doctors {
+  id             String @id @default(uuid())
   specialization String
 
   degree String
@@ -16,15 +16,17 @@ model Doctors{
 
   verified Boolean
 
-  userId String @unique
-  user User @relation(fields: [userId],references: [id],onDelete: Cascade)
-   reviews Reviews[]
-   prescription Prescription[]
-   availability Availability[]
-   appointment Appointment[]
+  userId       String         @unique
+  user         User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  reviews      Reviews[]
+  prescription Prescription[]
+  availability Availability[]
+  appointment  Appointment[]
+  specialty Specialty?
+  
 
-  created_at DateTime @default(now()) 
-  updatedat DateTime @updatedAt
+  created_at DateTime @default(now())
+  updatedat  DateTime @updatedAt
 
-@@map("doctors")
+  @@map("doctors")
 }

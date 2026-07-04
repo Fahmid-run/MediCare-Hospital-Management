@@ -1,28 +1,23 @@
-model Appointment{
-    id String @id @default(uuid())
-    doctorId String @unique
-    doctor Doctors @relation(fields: [doctorId],references: [id],onDelete: Cascade)
+model Appointment {
+  id       String  @id @default(uuid())
+  doctorId String  @unique
+  doctor   Doctors @relation(fields: [doctorId], references: [id], onDelete: Cascade)
 
+  patientId String   @unique
+  patient   Patients @relation(fields: [patientId], references: [id], onDelete: Cascade)
 
-    patientId String @unique
-    patient Patients @relation(fields: [patientId],references: [id],onDelete: Cascade)
+  invoice      Invoice[]
+  prescription Prescription[]
 
-    invoice Invoice[]
-    prescription Prescription[]
+  timeSlot      DateTime
+  status        Appointment_Status @default(Pending)
+  reason        String             @db.VarChar(200)
+  paymentStatus Payment_Status     @default(Pending)
 
+  created_at DateTime @default(now())
+  updatedat  DateTime @updatedAt
 
-
-    timeSlot DateTime
-    status Appointment_Status @default(Pending)
-    reason String @db.VarChar(200)
-    paymentStatus Payment_Status @default(Pending)
-
-
- created_at DateTime @default(now()) 
-  updatedat DateTime @updatedAt
-
-@@index([patientId])
-@@index([doctorId])
-
-@@map("appointment")
+  @@index([patientId])
+  @@index([doctorId])
+  @@map("appointment")
 }

@@ -1,26 +1,19 @@
-model Reviews{
+model Reviews {
+  id String @id @default(uuid())
 
+  doctorId String  @unique
+  doctor   Doctors @relation(fields: [doctorId], references: [id], onDelete: Cascade)
 
-    id String @id @default(uuid())
+  patientId String   @unique
+  patient   Patients @relation(fields: [patientId], references: [id], onDelete: Cascade)
 
+  rating  Int
+  comment String @db.VarChar(200)
 
-    doctorId String @unique
-    doctor Doctors @relation(fields: [doctorId],references: [id],onDelete: Cascade)
+  created_at DateTime @default(now())
+  updatedat  DateTime @updatedAt
 
-
-    patientId String @unique
-    patient Patients @relation(fields: [patientId],references: [id],onDelete: Cascade)
-
-
-    rating Int
-    comment String @db.VarChar(200)
-
- created_at DateTime @default(now()) 
-  updatedat DateTime @updatedAt
-
-
-@@index([doctorId])
-@@index([patientId])
-
-@@map("reviews")
+  @@index([doctorId])
+  @@index([patientId])
+  @@map("reviews")
 }

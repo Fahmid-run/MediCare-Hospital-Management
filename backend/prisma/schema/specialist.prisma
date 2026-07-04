@@ -1,0 +1,8 @@
+model Specialty{
+  id String @id @default(uuid())
+  specialty Specialty_Enum
+  doctorId       String         @unique
+  doctor         Doctors           @relation(fields: [doctorId], references: [id], onDelete: Cascade)
+
+  @@map("specialty")
+}

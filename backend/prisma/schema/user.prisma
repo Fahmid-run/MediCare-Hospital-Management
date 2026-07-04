@@ -1,20 +1,18 @@
-model User{
-  id String @id @default(uuid())
-  name String @db.VarChar(100) 
-  email String @unique
-  password String
-  role Role @default(PATIENT)
+model User {
+  id            String  @id @default(uuid())
+  name          String  @db.VarChar(100)
+  email         String  @unique
+  password      String
+  role          Role    @default(PATIENT)
   profile_photo String?
-  phone Int? @unique
+  phone         Int?    @unique
 
   notification Notification[]
-  doctor Doctors?
-  patient Patients?
+  doctor       Doctors?
+  patient      Patients?
 
-  created_at DateTime @default(now()) 
-  updatedat DateTime @updatedAt
- 
-@@map("users")
+  created_at DateTime @default(now())
+  updatedat  DateTime @updatedAt
 
-
+  @@map("users")
 }
