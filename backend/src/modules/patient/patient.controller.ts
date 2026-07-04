@@ -5,6 +5,8 @@ import sendResponse from "../../utils/sendResponse";
 
 
 import httpstatus from "http-status"
+import { isOwner } from "../../utils/isOwner";
+import { prisma } from "../../lib/prisma";
 
 
 
@@ -49,7 +51,19 @@ const findmyAppointment = catchAsync(
 );
 
 
+
+const cancelAppointment=catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+
+    const appointmentId = req.params.appointmentId
+    const userId = req.user?.id;
+
+    const is_Owner=isOwner(prisma.appointment,patientId,appointmentId)
+
+    
+  })
 export const patientController = {
   createAppointment,
-  findmyAppointment
+  findmyAppointment,
+  cancelAppointment,
 }; 

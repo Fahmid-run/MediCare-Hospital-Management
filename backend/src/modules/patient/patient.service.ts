@@ -36,17 +36,26 @@ const createAppointmentInDb = async (doctorId:string,patientId:string,paylaod:an
 
 const findmyAppointmentInDb = async (selfPatientId: string) => {
   
-  const isAppointmentExist = await check(prisma.appointment,selfPatientId)
+
+  const result = await prisma.appointment.findUniqueOrThrow({
+    where: {
+      patientId:selfPatientId
+    }
+  })
 
 
-  if (!isAppointmentExist) {
-    throw new Error('No appointment')
-  };
+  return result
+  
 
 
 
 }
 
+
+const cancelAppointmentInDb = (selfPatientId:string,appointmentId:string) => {
+  
+  
+}
 
 
 

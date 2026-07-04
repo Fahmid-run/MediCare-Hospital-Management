@@ -1,15 +1,15 @@
 import { prisma } from '../lib/prisma';
 
-export const isOwner = async (db:any,userId: any, databaseId: string) => {
+export const isOwner = async (db:any,userId: any, targetId: string) => {
   const result = await db.findUniqueOrThrow({
     where: {
-      id:databaseId
+      id:targetId
     },
   });
 
-  const isOwnerOfBug = userId === result;
+  const isowner = userId === result.patientId;
 
-  return isOwnerOfBug;
+  return isowner;
 };
 
 
