@@ -14,13 +14,18 @@ const router = Router();
 
 router.post('/register', userController.registerUser);
 
+
 router.get(
-  '/me',auth(Role.Admin,Role.User,Role.Author),
+  '/user/me',auth(Role.ADMIN,Role.DOCTOR,Role.PATIENT),
   userController.getMyProfile,
 );
 
 
-router.put("/my-profile", auth(Role.Admin, Role.Author, Role.User), userController.updateMyProfile)
+router.put(
+  '/user/my-profile',
+  auth(Role.ADMIN, Role.DOCTOR, Role.PATIENT),
+  userController.updateMyProfile,
+);
 
 
 export const userRoutes = router;

@@ -392,6 +392,7 @@ export const ModelName = {
   Patients: 'Patients',
   Prescription: 'Prescription',
   Reviews: 'Reviews',
+  Specialty: 'Specialty',
   User: 'User'
 } as const
 
@@ -408,7 +409,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "appointment" | "availability" | "doctors" | "invoice" | "notification" | "patients" | "prescription" | "reviews" | "user"
+    modelProps: "appointment" | "availability" | "doctors" | "invoice" | "notification" | "patients" | "prescription" | "reviews" | "specialty" | "user"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1004,6 +1005,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Specialty: {
+      payload: Prisma.$SpecialtyPayload<ExtArgs>
+      fields: Prisma.SpecialtyFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SpecialtyFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpecialtyPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SpecialtyFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpecialtyPayload>
+        }
+        findFirst: {
+          args: Prisma.SpecialtyFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpecialtyPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SpecialtyFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpecialtyPayload>
+        }
+        findMany: {
+          args: Prisma.SpecialtyFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpecialtyPayload>[]
+        }
+        create: {
+          args: Prisma.SpecialtyCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpecialtyPayload>
+        }
+        createMany: {
+          args: Prisma.SpecialtyCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.SpecialtyCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpecialtyPayload>[]
+        }
+        delete: {
+          args: Prisma.SpecialtyDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpecialtyPayload>
+        }
+        update: {
+          args: Prisma.SpecialtyUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpecialtyPayload>
+        }
+        deleteMany: {
+          args: Prisma.SpecialtyDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SpecialtyUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.SpecialtyUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpecialtyPayload>[]
+        }
+        upsert: {
+          args: Prisma.SpecialtyUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpecialtyPayload>
+        }
+        aggregate: {
+          args: Prisma.SpecialtyAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSpecialty>
+        }
+        groupBy: {
+          args: Prisma.SpecialtyGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SpecialtyGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SpecialtyCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SpecialtyCountAggregateOutputType> | number
+        }
+      }
+    }
     User: {
       payload: Prisma.$UserPayload<ExtArgs>
       fields: Prisma.UserFieldRefs
@@ -1230,6 +1305,15 @@ export const ReviewsScalarFieldEnum = {
 export type ReviewsScalarFieldEnum = (typeof ReviewsScalarFieldEnum)[keyof typeof ReviewsScalarFieldEnum]
 
 
+export const SpecialtyScalarFieldEnum = {
+  id: 'id',
+  specialty: 'specialty',
+  doctorId: 'doctorId'
+} as const
+
+export type SpecialtyScalarFieldEnum = (typeof SpecialtyScalarFieldEnum)[keyof typeof SpecialtyScalarFieldEnum]
+
+
 export const UserScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -1290,20 +1374,6 @@ export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaMod
 
 
 /**
- * Reference to a field of type 'DateTime'
- */
-export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
-    
-
-
-/**
- * Reference to a field of type 'DateTime[]'
- */
-export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
-    
-
-
-/**
  * Reference to a field of type 'Appointment_Status'
  */
 export type EnumAppointment_StatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Appointment_Status'>
@@ -1328,6 +1398,20 @@ export type EnumPayment_StatusFieldRefInput<$PrismaModel> = FieldRefInputType<$P
  * Reference to a field of type 'Payment_Status[]'
  */
 export type ListEnumPayment_StatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Payment_Status[]'>
+    
+
+
+/**
+ * Reference to a field of type 'DateTime'
+ */
+export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+/**
+ * Reference to a field of type 'DateTime[]'
+ */
+export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
     
 
 
@@ -1363,6 +1447,20 @@ export type EnumGenderFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaMod
  * Reference to a field of type 'Gender[]'
  */
 export type ListEnumGenderFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Gender[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Specialty_Enum'
+ */
+export type EnumSpecialty_EnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Specialty_Enum'>
+    
+
+
+/**
+ * Reference to a field of type 'Specialty_Enum[]'
+ */
+export type ListEnumSpecialty_EnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Specialty_Enum[]'>
     
 
 
@@ -1511,6 +1609,7 @@ export type GlobalOmitConfig = {
   patients?: Prisma.PatientsOmit
   prescription?: Prisma.PrescriptionOmit
   reviews?: Prisma.ReviewsOmit
+  specialty?: Prisma.SpecialtyOmit
   user?: Prisma.UserOmit
 }
 

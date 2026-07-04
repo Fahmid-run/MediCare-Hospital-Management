@@ -8,7 +8,7 @@ import { prisma } from '../../lib/prisma';
 
 
 const registerUserIntoDb = async (payload: RegisterUserPayload) => {
-  const { name, email, password,profile_photo } = payload;
+  const { name, email, password,profile_photo,phone } = payload;
   const isProfileExists = await prisma.user.findUnique({
     where: {
       email
@@ -29,7 +29,8 @@ const registerUserIntoDb = async (payload: RegisterUserPayload) => {
       name,
       email,
       password: hashedPwd,
-      profile_photo
+      profile_photo,
+      phone
     },
   });
 
@@ -67,22 +68,24 @@ const getMyProfileFromDb = async (id:string) => {
 
 const updateMyProfileInDb =  async(userId:string, payload:any) => {
 
-  const {name,email, profile_photo,bio}= payload
+  const {name,email, password,profile_photo,phone,role}= payload
 
   const updatedUSer = prisma.user.update({
     where: {
       id: userId,
     },
     data: {
-      name, email,
-      profile_photo
-    }
-    ,
-
+      name,
+      email,
+      password,
+      profile_photo,
+      phone,
+      role,
+    },
     omit: {
-      password:true
-    }
-  })
+      password: true,
+    },
+  });
 
   return updatedUSer;
   

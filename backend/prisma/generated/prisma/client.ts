@@ -82,6 +82,11 @@ export type Prescription = Prisma.PrescriptionModel
  */
 export type Reviews = Prisma.ReviewsModel
 /**
+ * Model Specialty
+ * 
+ */
+export type Specialty = Prisma.SpecialtyModel
+/**
  * Model User
  * 
  */

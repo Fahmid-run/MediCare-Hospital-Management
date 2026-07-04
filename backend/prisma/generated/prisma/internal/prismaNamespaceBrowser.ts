@@ -59,6 +59,7 @@ export const ModelName = {
   Patients: 'Patients',
   Prescription: 'Prescription',
   Reviews: 'Reviews',
+  Specialty: 'Specialty',
   User: 'User'
 } as const
 
@@ -189,6 +190,15 @@ export const ReviewsScalarFieldEnum = {
 } as const
 
 export type ReviewsScalarFieldEnum = (typeof ReviewsScalarFieldEnum)[keyof typeof ReviewsScalarFieldEnum]
+
+
+export const SpecialtyScalarFieldEnum = {
+  id: 'id',
+  specialty: 'specialty',
+  doctorId: 'doctorId'
+} as const
+
+export type SpecialtyScalarFieldEnum = (typeof SpecialtyScalarFieldEnum)[keyof typeof SpecialtyScalarFieldEnum]
 
 
 export const UserScalarFieldEnum = {

@@ -50,3 +50,20 @@ export const Active_Status = {
 } as const
 
 export type Active_Status = (typeof Active_Status)[keyof typeof Active_Status]
+
+
+export const Specialty_Enum = {
+  Cardiology: 'Cardiology',
+  Neurology: 'Neurology',
+  Orthopedics: 'Orthopedics',
+  Ophthalmology: 'Ophthalmology',
+  Pediatrics: 'Pediatrics',
+  Dermatology: 'Dermatology',
+  Dentistry: 'Dentistry',
+  ENT: 'ENT',
+  Psychiatry: 'Psychiatry',
+  Oncology: 'Oncology',
+  Gynecology: 'Gynecology'
+} as const
+
+export type Specialty_Enum = (typeof Specialty_Enum)[keyof typeof Specialty_Enum]

@@ -5,7 +5,7 @@ model User {
   password      String
   role          Role    @default(PATIENT)
   profile_photo String?
-  phone         Int?    @unique
+  phone         String @unique
 
   notification Notification[]
   doctor       Doctors?

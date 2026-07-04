@@ -9,7 +9,7 @@ model Appointment {
   invoice      Invoice[]
   prescription Prescription[]
 
-  timeSlot      DateTime
+  timeSlot      String
   status        Appointment_Status @default(Pending)
   reason        String             @db.VarChar(200)
   paymentStatus Payment_Status     @default(Pending)

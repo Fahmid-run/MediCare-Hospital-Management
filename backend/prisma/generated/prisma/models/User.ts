@@ -20,18 +20,8 @@ export type UserModel = runtime.Types.Result.DefaultSelection<Prisma.$UserPayloa
 
 export type AggregateUser = {
   _count: UserCountAggregateOutputType | null
-  _avg: UserAvgAggregateOutputType | null
-  _sum: UserSumAggregateOutputType | null
   _min: UserMinAggregateOutputType | null
   _max: UserMaxAggregateOutputType | null
-}
-
-export type UserAvgAggregateOutputType = {
-  phone: number | null
-}
-
-export type UserSumAggregateOutputType = {
-  phone: number | null
 }
 
 export type UserMinAggregateOutputType = {
@@ -41,7 +31,7 @@ export type UserMinAggregateOutputType = {
   password: string | null
   role: $Enums.Role | null
   profile_photo: string | null
-  phone: number | null
+  phone: string | null
   created_at: Date | null
   updatedat: Date | null
 }
@@ -53,7 +43,7 @@ export type UserMaxAggregateOutputType = {
   password: string | null
   role: $Enums.Role | null
   profile_photo: string | null
-  phone: number | null
+  phone: string | null
   created_at: Date | null
   updatedat: Date | null
 }
@@ -71,14 +61,6 @@ export type UserCountAggregateOutputType = {
   _all: number
 }
 
-
-export type UserAvgAggregateInputType = {
-  phone?: true
-}
-
-export type UserSumAggregateInputType = {
-  phone?: true
-}
 
 export type UserMinAggregateInputType = {
   id?: true
@@ -155,18 +137,6 @@ export type UserAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalA
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
-   * Select which fields to average
-  **/
-  _avg?: UserAvgAggregateInputType
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   * 
-   * Select which fields to sum
-  **/
-  _sum?: UserSumAggregateInputType
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   * 
    * Select which fields to find the minimum value
   **/
   _min?: UserMinAggregateInputType
@@ -197,8 +167,6 @@ export type UserGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
   take?: number
   skip?: number
   _count?: UserCountAggregateInputType | true
-  _avg?: UserAvgAggregateInputType
-  _sum?: UserSumAggregateInputType
   _min?: UserMinAggregateInputType
   _max?: UserMaxAggregateInputType
 }
@@ -210,12 +178,10 @@ export type UserGroupByOutputType = {
   password: string
   role: $Enums.Role
   profile_photo: string | null
-  phone: number | null
+  phone: string
   created_at: Date
   updatedat: Date
   _count: UserCountAggregateOutputType | null
-  _avg: UserAvgAggregateOutputType | null
-  _sum: UserSumAggregateOutputType | null
   _min: UserMinAggregateOutputType | null
   _max: UserMaxAggregateOutputType | null
 }
@@ -245,7 +211,7 @@ export type UserWhereInput = {
   password?: Prisma.StringFilter<"User"> | string
   role?: Prisma.EnumRoleFilter<"User"> | $Enums.Role
   profile_photo?: Prisma.StringNullableFilter<"User"> | string | null
-  phone?: Prisma.IntNullableFilter<"User"> | number | null
+  phone?: Prisma.StringFilter<"User"> | string
   created_at?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedat?: Prisma.DateTimeFilter<"User"> | Date | string
   notification?: Prisma.NotificationListRelationFilter
@@ -260,7 +226,7 @@ export type UserOrderByWithRelationInput = {
   password?: Prisma.SortOrder
   role?: Prisma.SortOrder
   profile_photo?: Prisma.SortOrderInput | Prisma.SortOrder
-  phone?: Prisma.SortOrderInput | Prisma.SortOrder
+  phone?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updatedat?: Prisma.SortOrder
   notification?: Prisma.NotificationOrderByRelationAggregateInput
@@ -271,7 +237,7 @@ export type UserOrderByWithRelationInput = {
 export type UserWhereUniqueInput = Prisma.AtLeast<{
   id?: string
   email?: string
-  phone?: number
+  phone?: string
   AND?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   OR?: Prisma.UserWhereInput[]
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
@@ -293,14 +259,12 @@ export type UserOrderByWithAggregationInput = {
   password?: Prisma.SortOrder
   role?: Prisma.SortOrder
   profile_photo?: Prisma.SortOrderInput | Prisma.SortOrder
-  phone?: Prisma.SortOrderInput | Prisma.SortOrder
+  phone?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updatedat?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
-  _avg?: Prisma.UserAvgOrderByAggregateInput
   _max?: Prisma.UserMaxOrderByAggregateInput
   _min?: Prisma.UserMinOrderByAggregateInput
-  _sum?: Prisma.UserSumOrderByAggregateInput
 }
 
 export type UserScalarWhereWithAggregatesInput = {
@@ -313,7 +277,7 @@ export type UserScalarWhereWithAggregatesInput = {
   password?: Prisma.StringWithAggregatesFilter<"User"> | string
   role?: Prisma.EnumRoleWithAggregatesFilter<"User"> | $Enums.Role
   profile_photo?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
-  phone?: Prisma.IntNullableWithAggregatesFilter<"User"> | number | null
+  phone?: Prisma.StringWithAggregatesFilter<"User"> | string
   created_at?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   updatedat?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
 }
@@ -325,7 +289,7 @@ export type UserCreateInput = {
   password: string
   role?: $Enums.Role
   profile_photo?: string | null
-  phone?: number | null
+  phone: string
   created_at?: Date | string
   updatedat?: Date | string
   notification?: Prisma.NotificationCreateNestedManyWithoutUserInput
@@ -340,7 +304,7 @@ export type UserUncheckedCreateInput = {
   password: string
   role?: $Enums.Role
   profile_photo?: string | null
-  phone?: number | null
+  phone: string
   created_at?: Date | string
   updatedat?: Date | string
   notification?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
@@ -355,7 +319,7 @@ export type UserUpdateInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   profile_photo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedat?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notification?: Prisma.NotificationUpdateManyWithoutUserNestedInput
@@ -370,7 +334,7 @@ export type UserUncheckedUpdateInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   profile_photo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedat?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notification?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -385,7 +349,7 @@ export type UserCreateManyInput = {
   password: string
   role?: $Enums.Role
   profile_photo?: string | null
-  phone?: number | null
+  phone: string
   created_at?: Date | string
   updatedat?: Date | string
 }
@@ -397,7 +361,7 @@ export type UserUpdateManyMutationInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   profile_photo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedat?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -409,7 +373,7 @@ export type UserUncheckedUpdateManyInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   profile_photo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedat?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -429,10 +393,6 @@ export type UserCountOrderByAggregateInput = {
   phone?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updatedat?: Prisma.SortOrder
-}
-
-export type UserAvgOrderByAggregateInput = {
-  phone?: Prisma.SortOrder
 }
 
 export type UserMaxOrderByAggregateInput = {
@@ -457,10 +417,6 @@ export type UserMinOrderByAggregateInput = {
   phone?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updatedat?: Prisma.SortOrder
-}
-
-export type UserSumOrderByAggregateInput = {
-  phone?: Prisma.SortOrder
 }
 
 export type UserCreateNestedOneWithoutDoctorInput = {
@@ -513,14 +469,6 @@ export type NullableStringFieldUpdateOperationsInput = {
   set?: string | null
 }
 
-export type NullableIntFieldUpdateOperationsInput = {
-  set?: number | null
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
-}
-
 export type UserCreateWithoutDoctorInput = {
   id?: string
   name: string
@@ -528,7 +476,7 @@ export type UserCreateWithoutDoctorInput = {
   password: string
   role?: $Enums.Role
   profile_photo?: string | null
-  phone?: number | null
+  phone: string
   created_at?: Date | string
   updatedat?: Date | string
   notification?: Prisma.NotificationCreateNestedManyWithoutUserInput
@@ -542,7 +490,7 @@ export type UserUncheckedCreateWithoutDoctorInput = {
   password: string
   role?: $Enums.Role
   profile_photo?: string | null
-  phone?: number | null
+  phone: string
   created_at?: Date | string
   updatedat?: Date | string
   notification?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
@@ -572,7 +520,7 @@ export type UserUpdateWithoutDoctorInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   profile_photo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedat?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notification?: Prisma.NotificationUpdateManyWithoutUserNestedInput
@@ -586,7 +534,7 @@ export type UserUncheckedUpdateWithoutDoctorInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   profile_photo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedat?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notification?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -600,7 +548,7 @@ export type UserCreateWithoutNotificationInput = {
   password: string
   role?: $Enums.Role
   profile_photo?: string | null
-  phone?: number | null
+  phone: string
   created_at?: Date | string
   updatedat?: Date | string
   doctor?: Prisma.DoctorsCreateNestedOneWithoutUserInput
@@ -614,7 +562,7 @@ export type UserUncheckedCreateWithoutNotificationInput = {
   password: string
   role?: $Enums.Role
   profile_photo?: string | null
-  phone?: number | null
+  phone: string
   created_at?: Date | string
   updatedat?: Date | string
   doctor?: Prisma.DoctorsUncheckedCreateNestedOneWithoutUserInput
@@ -644,7 +592,7 @@ export type UserUpdateWithoutNotificationInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   profile_photo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedat?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   doctor?: Prisma.DoctorsUpdateOneWithoutUserNestedInput
@@ -658,7 +606,7 @@ export type UserUncheckedUpdateWithoutNotificationInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   profile_photo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedat?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   doctor?: Prisma.DoctorsUncheckedUpdateOneWithoutUserNestedInput
@@ -672,7 +620,7 @@ export type UserCreateWithoutPatientInput = {
   password: string
   role?: $Enums.Role
   profile_photo?: string | null
-  phone?: number | null
+  phone: string
   created_at?: Date | string
   updatedat?: Date | string
   notification?: Prisma.NotificationCreateNestedManyWithoutUserInput
@@ -686,7 +634,7 @@ export type UserUncheckedCreateWithoutPatientInput = {
   password: string
   role?: $Enums.Role
   profile_photo?: string | null
-  phone?: number | null
+  phone: string
   created_at?: Date | string
   updatedat?: Date | string
   notification?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
@@ -716,7 +664,7 @@ export type UserUpdateWithoutPatientInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   profile_photo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedat?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notification?: Prisma.NotificationUpdateManyWithoutUserNestedInput
@@ -730,7 +678,7 @@ export type UserUncheckedUpdateWithoutPatientInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   profile_photo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  phone?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  phone?: Prisma.StringFieldUpdateOperationsInput | string
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedat?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   notification?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
@@ -844,7 +792,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     password: string
     role: $Enums.Role
     profile_photo: string | null
-    phone: number | null
+    phone: string
     created_at: Date
     updatedat: Date
   }, ExtArgs["result"]["user"]>
@@ -1279,7 +1227,7 @@ export interface UserFieldRefs {
   readonly password: Prisma.FieldRef<"User", 'String'>
   readonly role: Prisma.FieldRef<"User", 'Role'>
   readonly profile_photo: Prisma.FieldRef<"User", 'String'>
-  readonly phone: Prisma.FieldRef<"User", 'Int'>
+  readonly phone: Prisma.FieldRef<"User", 'String'>
   readonly created_at: Prisma.FieldRef<"User", 'DateTime'>
   readonly updatedat: Prisma.FieldRef<"User", 'DateTime'>
 }

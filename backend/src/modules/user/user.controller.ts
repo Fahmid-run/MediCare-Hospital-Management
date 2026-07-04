@@ -7,9 +7,7 @@ import httpstatus from 'http-status';
 import { userService } from './user.service';
 import catchAsync from '../../utils/catchAsync';
 import sendResponse from '../../utils/sendResponse';
-import jwt from 'jsonwebtoken';
-import configuration from '../../config';
-import { jwtUtils } from '../../utils/jwt';
+
 
 
 const registerUser = catchAsync(
@@ -21,9 +19,7 @@ const registerUser = catchAsync(
       success: true,
       statusCode: httpstatus.CREATED,
       message: 'user registered successfully',
-      data: {
-        user,
-      },
+      data: user
     });
   },
 );
@@ -50,9 +46,7 @@ const getMyProfile = catchAsync(
       success: true,
       statusCode: httpstatus.OK,
       message: "Success",
-      data: {
-        // profile
-      }
+      data:profile
     })
   },
 );
@@ -80,9 +74,7 @@ const updateMyProfile = catchAsync(async(req, res,next) => {
     success: true,
     statusCode: httpstatus.OK,
     message: 'Success',
-    data: {
-      update,
-    },
+    data: update
   });
 
 

@@ -66,9 +66,6 @@ const refreshToken = async (refreshToken: string) => {
     },
   });
 
-  if (user.active_status === 'Blocked') {
-    throw new Error('User is blocked');
-  }
 
   const jwtPayload = {
     id,
